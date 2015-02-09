@@ -1,0 +1,27 @@
+[user]
+	name = Fredrik Sommar
+	email = fsommar@kth.se
+[push]
+	default = simple
+[core]
+	editor = vim
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+	ui = true
+[alias]
+    st = status -sb
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    ready = rebase -i @{u}
+    lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author joe
+    purr = pull --rebase
+	d = difftool
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
