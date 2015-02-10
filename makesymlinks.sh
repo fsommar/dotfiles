@@ -26,16 +26,13 @@ for file in $files; do
 done
 
 # Test to see if zshell is installed
-if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-	if [[ ! -f $(which zsh) ]]; then
-		echo "set zsh somehow?"
-	fi
+if [ -f $(which zsh) ]; then
 	# Clone my oh-my-zsh repository from GitHub only if it isn't already present
 	if [[ ! -d $dir/oh-my-zsh/ ]]; then
 		git clone https://github.com/robbyrussell/oh-my-zsh.git
 	fi
 	# Set the default shell to zsh if it isn't currently set to zsh
-	if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+	if [[ ! $SHELL = $(which zsh) ]]; then
 		echo "Setting default shell to zsh"
 		chsh -s $(which zsh)
 	fi
