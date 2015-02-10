@@ -25,21 +25,19 @@ Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'zeis/vim-kolor'
-Plugin 'nanotech/jellybeans.vim'
+" Plugin 'zeis/vim-kolor'
+" Plugin 'nanotech/jellybeans.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'morhetz/gruvbox'
 Plugin 'wting/rust.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'pangloss/vim-javascript'
+" Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'othree/javascript-libraries-syntax.vim'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'w0ng/vim-hybrid'
-Plugin 'StanAngeloff/php.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'godlygeek/csapprox'
 if v:version > 703
 	Plugin 'Valloric/YouCompleteMe'
 endif
@@ -129,10 +127,10 @@ set ttyfast " sends characters more often to improve redraw rate
 set lazyredraw " delays redraws to improve performance (?)
 
 " absolute numbers in insert, relative otherwise
-autocmd InsertEnter * :set number
+autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 " also when focus lost/gained
-autocmd FocusLost * :set number
+autocmd FocusLost * :set norelativenumber
 autocmd FocusGained * :set relativenumber
 
 " Turn off backups and swaps

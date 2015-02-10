@@ -51,6 +51,7 @@ plugins=(git common-aliases dircycle last-working-dir scala)
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/bin:$LD_LIBRARY_PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
