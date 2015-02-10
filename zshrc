@@ -91,7 +91,7 @@ module() {
 # Colors for other commands
 alias grep='grep --color'
 
-if [ "$uname" = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     # Do something under Mac OS X platform
     export CLICOLOR=1
     export LSCOLORS=ExFxCxDxBxegedabagacad
