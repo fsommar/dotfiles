@@ -106,5 +106,5 @@ if [ "$(uname)" == "Darwin" ]; then
     export LSCOLORS=ExFxCxDxBxegedabagacad
 else
     alias ls='ls -GpFh --color=auto'
-    eval `dircolors ~/.config/dircolors-solarized/dircolors.ansi-dark`
+    eval `dircolors ~/.dircolors/solarized/dircolors.ansi-dark`
 fi
