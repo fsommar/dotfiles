@@ -26,24 +26,26 @@ Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'zeis/vim-kolor'
-" Plugin 'nanotech/jellybeans.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'morhetz/gruvbox'
-Plugin 'rust-lang/rust.vim'
-Plugin 'phildawes/racer'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'Raimondi/delimitMate'
-" Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'othree/javascript-libraries-syntax.vim'
-" Plugin 'pangloss/vim-javascript'
-Plugin 'w0ng/vim-hybrid'
+Plugin 'Raimondi/delimitMate' " Better support for parens
+Plugin 'kien/ctrlp.vim' " Fuzzy searching à sublime text
+"
+" Language support
 Plugin 'derekwyatt/vim-scala'
-Plugin 'kien/ctrlp.vim'
+Plugin 'phildawes/racer' " Rust autocompletion
+Plugin 'rust-lang/rust.vim'
+
+" Colorschemes
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'morhetz/gruvbox'
+
+" YouCompleteMe is only available for Vim 7.3+
 if v:version > 703
 	Plugin 'Valloric/YouCompleteMe'
 endif
 call vundle#end()
+
 filetype plugin indent on   " detect file type and load indents and plugins
 syntax on                   " turn on syntax highlighting
 
