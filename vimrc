@@ -66,7 +66,7 @@ if has('gui_running')
 	else
 		set guifont=Inconsolata-g\ for\ Powerline\ 12
 	endif
-elseif &term =~ "putty"
+elseif &term =~ "putty" || &term =~ "xterm-256"
 	set background=dark
 	colorscheme solarized
 else
@@ -75,7 +75,7 @@ else
 endif
 
 if has("terminfo")
-  let &t_Co=16
+  let &t_Co=256
   let &t_AB="\<Esc>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm"
   let &t_AF="\<Esc>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm"
 else
@@ -84,7 +84,7 @@ else
   let &t_Sb="\<Esc>[4%dm"
 endif
 
-autocmd filetype python set expandtab
+autocmd filetype python setlocal expandtab
 
 let mapleader = ","
 let g:mapleader = ","
