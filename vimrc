@@ -89,6 +89,8 @@ let g:mapleader = ","
 " w!! for changing the file to sudo in case it wasn't opened as su
 cmap w!! w !sudo tee % >/dev/null
 
+set modeline
+set modelines=1
 set laststatus=2
 set clipboard=unnamed " share yank with OS clipboard
 set nowrap        " don't wrap lines
