@@ -82,6 +82,7 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export EDITOR=vim
+export RUST_SRC_PATH=/usr/local/src/rust/src
 
 alias ls='ls -GpFh'
 alias gs='git st'

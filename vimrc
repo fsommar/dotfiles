@@ -1,5 +1,5 @@
 " FIXME: Save swap files and/or history in a dedicated folder?
-set nocompatible " Apparently needed for cool vim things?
+set nocompatible " Disable vi compatibility mode
 set langmenu=en_US.UTF-8
 let $LANG='en'
 set encoding=utf8
@@ -17,7 +17,8 @@ endif
 filetype off
 let g:syntastic_check_on_open=1
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
+let g:racer_cmd = expand(bundle . "/racer/target/racer")
 
 let &rtp .= ',' . expand(bundle . "/vundle")
 call vundle#begin(expand(bundle))
@@ -29,7 +30,8 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'nanotech/jellybeans.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'morhetz/gruvbox'
-Plugin 'wting/rust.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'phildawes/racer'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate'
 " Plugin 'jelera/vim-javascript-syntax'
@@ -206,8 +208,8 @@ map<C-l> <C-w>l
 " inoremap k <Esc>:m-2<CR>==gi
 " vnoremap j :m'>+<CR>gv=gv
 " vnoremap k :m'<-2<CR>gv=gv
-autocmd Filetype java set makeprg=javac\ %
-set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-map <F9> :make<Return>:copen<Return>
-map <F10> :cprevious<Return>
-map <F11> :cnext<Return>
+" autocmd Filetype java set makeprg=javac\ %
+" set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+" map <F9> :make<Return>:copen<Return>
+" map <F10> :cprevious<Return>
+" map <F11> :cnext<Return>
