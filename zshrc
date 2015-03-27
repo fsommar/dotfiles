@@ -96,7 +96,7 @@ alias grep='grep --color'
 if [ "$(uname)" = "Darwin" ]; then
     # Do something under Mac OS X platform
     export CLICOLOR=1
-    export LSCOLORS=ExFxCxDxBxegedabagacad
+    export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 else
     alias ls='ls -GpFh --color=auto'
     eval `dircolors ~/.dircolors/solarized/dircolors.ansi-dark`
