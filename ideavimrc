@@ -1,0 +1,36 @@
+" IDEA-specific plugins
+set surround
+
+" General vim settings. TODO: Share between vimrc and ideavimrc.
+set number        " always show line numbers
+set relativenumber
+set showmatch     " set show matching parenthesis
+set ignorecase    " ignore case when searching
+set smartcase     " ignore case if search pattern is all lowercase,
+                    "    case-sensitive otherwise
+set scrolloff=8 " j/k will start scrolling when 8 lines from edge
+
+set list
+set listchars=tab:·\ ,trail:·,extends:»,precedes:«,nbsp:×
+highlight SpecialKey ctermfg=2 ctermbg=NONE
+highlight NonText ctermfg=2 ctermbg=NONE
+
+" Key rebinds
+let mapleader = ","
+let g:mapleader = ","
+nnoremap <Leader>s :update<CR>
+nnoremap <Leader>w :write<CR>
+nnoremap <Leader>c :ClearHighlight<CR>
+
+" Treat long lines as break lines (useful for moving around in them)
+map j gj
+map k gk
+
+" use space to search
+map <Space> /
+
+" Use tab in visual mode
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+" shift tab dedents in insert
+imap <S-Tab> <C-d>
