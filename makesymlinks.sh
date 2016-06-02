@@ -6,7 +6,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/old_dotfiles             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="bashrc bash_profile modules gitconfig vimrc ideavimrc zshrc dircolors oh-my-zsh"
+files="bashrc bash_profile gitconfig vimrc ideavimrc zshrc dircolors oh-my-zsh"
 
 ##########
 
