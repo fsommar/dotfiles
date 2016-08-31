@@ -59,6 +59,12 @@ if !isdirectory(expand(bundle . "/vim-airline"))
 	execute 'silent q'
 endif
 
+" Show arrow for tabs
+set list
+set listchars=tab:·\ ,trail:·,extends:»,precedes:«,nbsp:×
+highlight SpecialKey ctermfg=2 ctermbg=NONE
+highlight NonText ctermfg=2 ctermbg=NONE
+
 set background=dark
 if has('gui_running')
 	set guioptions-=T  " no toolbar
@@ -150,14 +156,6 @@ set nobackup
 set nowb
 set noswapfile
 
-" highlight CursorLine cterm=NONE ctermbg=black
-
-" Show arrow for tabs
-set list
-set listchars=tab:·\ ,trail:·,extends:»,precedes:«,nbsp:×
-highlight SpecialKey ctermfg=2 ctermbg=NONE
-highlight NonText ctermfg=2 ctermbg=NONE
-
 " Treat long lines as break lines (useful for moving around in them)
 map j gj
 map k gk
@@ -211,17 +209,3 @@ map<C-j> <C-w>j
 map<C-k> <C-w>k
 map<C-h> <C-w>h
 map<C-l> <C-w>l
-
-" Alt+j/k to move lines
-" disable esc sequences to make this less of a nuisance?
-" nnoremap j :m+<CR>==
-" nnoremap k :m-2<CR>==
-" inoremap j <Esc>:m+<CR>==gi
-" inoremap k <Esc>:m-2<CR>==gi
-" vnoremap j :m'>+<CR>gv=gv
-" vnoremap k :m'<-2<CR>gv=gv
-" autocmd Filetype java set makeprg=javac\ %
-" set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
-" map <F9> :make<Return>:copen<Return>
-" map <F10> :cprevious<Return>
-" map <F11> :cnext<Return>
