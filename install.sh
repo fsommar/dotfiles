@@ -1,29 +1,32 @@
 #!/bin/bash
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# This script creates symlinks in the home directory
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/old_dotfiles             # old dotfiles backup directory
+dir="$(cd "$(dirname "$0")" && pwd)"
+olddir=$dir/old
 # list of files/folders to symlink in homedir
-files="bashrc bash_profile gitconfig vimrc ideavimrc zshrc dircolors oh-my-zsh"
+files="bashrc bash_profile gitconfig vimrc ideavimrc zshrc dircolors oh-my-zsh tmux.conf"
+
+function symlink() {
+	echo "~/.$2 --> ~${1#$HOME}"
+	mv ~/.$2 $olddir 2> /dev/null
+	ln -s $1 ~/.$2
+}
 
 ##########
 
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
-mkdir -p $olddir
-echo "done"
-
-echo -n "Changing to the $dir directory ..."
 cd $dir
-echo "done"
+mkdir -p $olddir
 
-echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
-	mv ~/.$file $olddir 2> /dev/null
-	echo "Creating symlink to $file in home directory."
-	ln -s $dir/$file ~/.$file
+	symlink $dir/$file $file
 done
+
+# Share plugin directories for vim and neovim
+mkdir -p ~/.config
+symlink $dir/nvim vim
+symlink $dir/nvim config/nvim 0
 
 # Test to see if zshell is installed
 if [ -f $(which zsh) ]; then

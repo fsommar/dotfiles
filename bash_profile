@@ -10,6 +10,12 @@
 #    source ~/.bashrc
 #fi
 
+# If we-re in gnome terminal or terminator, set TERM for more vim colors.
+if [[ $COLORTERM = gnome-terminal && ! $TERM = screen-256color ]]; then
+	TERM=xterm-256color
+fi
+JAVA_8_HOME=$JAVA_HOME
+
 if [ -x $(which zsh) ]; then
 	exec $(which zsh);
 elif [ -r ~/.bashrc ]; then

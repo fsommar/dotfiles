@@ -2,7 +2,9 @@
 set nocompatible " Disable vi compatibility mode
 set langmenu=en_US.UTF-8
 let $LANG='en'
-set encoding=utf8
+if !has("nvim")
+	set encoding=utf8
+endif
 
 if has("win32") || has("win16")
 	let bundle="~/vimfiles/bundle"
@@ -31,18 +33,20 @@ Plugin 'Raimondi/delimitMate' " Better support for parens
 Plugin 'kien/ctrlp.vim' " Fuzzy searching à sublime text
 "
 " Language support
-Plugin 'derekwyatt/vim-scala'
-Plugin 'phildawes/racer' " Rust autocompletion
-Plugin 'rust-lang/rust.vim'
+"Plugin 'derekwyatt/vim-scala'
+"Plugin 'phildawes/racer' " Rust autocompletion
+"Plugin 'rust-lang/rust.vim'
 
 " Colorschemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'w0ng/vim-hybrid'
-Plugin 'morhetz/gruvbox'
+if has("nvim")
+	Plugin 'morhetz/gruvbox'
+endif
 
 " YouCompleteMe is only available for Vim 7.3+
 if v:version > 703
-	Plugin 'Valloric/YouCompleteMe'
+	"Plugin 'Valloric/YouCompleteMe'
 endif
 call vundle#end()
 
@@ -55,6 +59,7 @@ if !isdirectory(expand(bundle . "/vim-airline"))
 	execute 'silent q'
 endif
 
+set background=dark
 if has('gui_running')
 	set guioptions-=T  " no toolbar
 	set guioptions-=m  " no menu bar
@@ -66,22 +71,25 @@ if has('gui_running')
 	else
 		set guifont=Inconsolata-g\ for\ Powerline\ 12
 	endif
-elseif &term =~ "putty" || &term =~ "xterm-256"
-	set background=dark
+elseif has("nvim")
+	colorscheme gruvbox
+elseif &term =~ "putty" || &term =~ "256color"
 	colorscheme solarized
 else
 	let g:hybrid_use_Xresources = 1
 	colorscheme hybrid
 endif
 
-if has("terminfo")
-  let &t_Co=256
-  let &t_AB="\<Esc>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm"
-  let &t_AF="\<Esc>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm"
-else
-  let &t_Co=16
-  let &t_Sf="\<Esc>[3%dm"
-  let &t_Sb="\<Esc>[4%dm"
+if !has("nvim") && !has("gui_running")
+	if has("terminfo")
+		let &t_Co=256
+		let &t_AB="\<Esc>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm"
+		let &t_AF="\<Esc>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm"
+	else
+		let &t_Co=16
+		let &t_Sf="\<Esc>[3%dm"
+		let &t_Sb="\<Esc>[4%dm"
+	endif
 endif
 
 autocmd filetype python setlocal expandtab
@@ -194,6 +202,8 @@ nnoremap <Leader>s :update<CR>
 nnoremap <Leader>w :write<CR>
 nnoremap <Leader>c :ClearHighlight<CR>
 
+autocmd InsertEnter * set timeoutlen=0
+autocmd InsertLeave * set timeoutlen=1000
 inoremap jj <Esc>
 
 " Ctrl+j/k/h/l to move between splits
