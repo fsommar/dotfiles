@@ -64,7 +64,6 @@ highlight SpecialKey ctermfg=2 ctermbg=NONE
 highlight NonText ctermfg=2 ctermbg=NONE
 
 set background=dark
-set termguicolors
 if has('gui_running')
 	set guioptions-=T  " no toolbar
 	set guioptions-=m  " no menu bar
@@ -77,6 +76,7 @@ if has('gui_running')
 		set guifont=Inconsolata-g\ for\ Powerline\ 12
 	endif
 elseif has("nvim") || $TERM_PROGRAM =~ "iTerm"
+	set termguicolors
 	colorscheme gruvbox
 elseif &term =~ "putty" || &term =~ "256color"
 	colorscheme solarized
