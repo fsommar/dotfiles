@@ -5,6 +5,7 @@
 	default = simple
 [core]
 	editor = vim
+	autocrlf = input
 [color]
 	branch = auto
 	diff = auto
@@ -24,3 +25,10 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+
+[merge]
+	tool = unityyamlmerge
+
+[mergetool "unityyamlmerge"]
+	trustExitCode = false
+	cmd = '/Applications/Unity/Unity.app/Contents/Tools/UnityYAMLMerge' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
