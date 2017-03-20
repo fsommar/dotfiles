@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir=~/dotfiles                    # dotfiles directory
+dir="$(cd "$(dirname "$0")" && pwd)"
 themes="fsommar"
 
 for theme in $themes; do
