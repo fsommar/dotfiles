@@ -75,7 +75,7 @@ if has('gui_running')
 	else
 		set guifont=Inconsolata-g\ for\ Powerline\ 12
 	endif
-elseif has("nvim") || $TERM_PROGRAM =~ "iTerm"
+elseif has("nvim") || ($TERM_PROGRAM =~ "iTerm" && has("termguicolors"))
 	set termguicolors
 	colorscheme gruvbox
 elseif &term =~ "putty" || &term =~ "256color"
