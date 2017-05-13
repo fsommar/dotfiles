@@ -31,8 +31,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate' " Better support for parens
 Plugin 'kien/ctrlp.vim' " Fuzzy searching à sublime text
-"
+
 " Language support
+Plugin 'rodjek/vim-puppet'
 "Plugin 'derekwyatt/vim-scala'
 "Plugin 'phildawes/racer' " Rust autocompletion
 "Plugin 'rust-lang/rust.vim'
