@@ -18,7 +18,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases dircycle last-working-dir scala)
+plugins=(git common-aliases dircycle last-working-dir scala zsh-autosuggestions)
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -43,6 +43,7 @@ export LANG=en_US.UTF-8
 
 export EDITOR=vim
 export RUST_SRC_PATH=/usr/local/src/rust/src
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
 
 cd() { builtin cd "$@" && ls; }
 alias cdp='cd ~/projects'

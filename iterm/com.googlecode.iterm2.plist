@@ -2090,7 +2090,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/fsommar/dotfiles/iterm</string>
+	<string>/Users/fsommar/.iterm</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
