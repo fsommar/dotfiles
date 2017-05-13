@@ -33,3 +33,5 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 " shift tab dedents in insert
 imap <S-Tab> <C-d>
+" Setting visual bell disables the audible bell (weird behavior...)
+set visualbell
