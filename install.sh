@@ -6,7 +6,7 @@
 dir="$(cd "$(dirname "$0")" && pwd)"
 olddir=$dir/old
 # list of files/folders to symlink in homedir
-files="bashrc bash_profile gitconfig vimrc ideavimrc zshrc dircolors oh-my-zsh tmux.conf"
+files="bashrc bash_profile gitconfig vimrc ideavimrc zshrc dircolors oh-my-zsh tmux.conf gitignore_global"
 
 function symlink() {
 	echo "~/.$2 --> ~${1#$HOME}"
