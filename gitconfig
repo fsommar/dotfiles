@@ -7,6 +7,7 @@
 	editor = vim
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	branch = auto
 	diff = auto
@@ -22,6 +23,7 @@
 	lg = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	purr = pull --rebase
 	d = difftool
+	patch = !git --no-pager diff --no-color
 [diff]
 	tool = vimdiff
 [difftool]
