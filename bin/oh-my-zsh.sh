@@ -5,7 +5,7 @@ if [[ ! -d $dir ]]; then
 fi
 
 dir="$DOTFILES/oh-my-zsh/plugins/zsh-autosuggestions/"
-if [[ ! -d $plugin ]]; then
+if [[ ! -d $dir ]]; then
   git clone git://github.com/zsh-users/zsh-autosuggestions $dir
 fi
 
