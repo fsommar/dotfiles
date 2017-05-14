@@ -49,6 +49,7 @@ cd() { builtin cd "$@" && ls; }
 alias cdp='cd ~/projects'
 alias cdd='cd ~/Downloads'
 alias ls='ls -GpFh'
+alias git='hub'
 alias gs='git st'
 alias gdc='gd --cached'
 
