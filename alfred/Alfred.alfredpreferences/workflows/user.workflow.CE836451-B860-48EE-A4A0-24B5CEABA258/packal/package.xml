@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Secure SHell</name>
+  <version>0.7.1</version>
+  <bundle>net.deanishe.alfred-ssh</bundle>
+  <updated>1481537240</updated>
+  <file>secure-shell-0.7.1.alfredworkflow</file>
+</workflow>
