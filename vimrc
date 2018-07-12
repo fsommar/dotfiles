@@ -18,6 +18,10 @@ endif
 
 filetype off
 let g:syntastic_check_on_open=1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_enable_signs=1
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_args=['--fix']
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:racer_cmd = expand(bundle . "/racer/target/racer")
@@ -31,6 +35,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Raimondi/delimitMate' " Better support for parens
 Plugin 'kien/ctrlp.vim' " Fuzzy searching à sublime text
+Plugin 'pangloss/vim-javascript'
 "
 " Language support
 "Plugin 'derekwyatt/vim-scala'
@@ -86,12 +91,17 @@ else
 endif
 
 autocmd filetype python setlocal expandtab
+autocmd filetype javascript setlocal et ts=2 sw=2
+" add an autocmd after vim started to execute checktime for *.js files on write
+" https://vi.stackexchange.com/a/11281
+au VimEnter *.js au BufWritePost *.js checktime
 
 let mapleader = ","
 let g:mapleader = ","
 " w!! for changing the file to sudo in case it wasn't opened as su
 cmap w!! w !sudo tee % >/dev/null
 
+set autoread      " Automatically read files changed outside of vim (e.g. eslint --fix)
 set modeline
 set modelines=1
 set laststatus=2

@@ -82,10 +82,14 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export EDITOR=vim
-export RUST_SRC_PATH=/usr/local/src/rust/src
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
+fpath+=~/.zfunc
 
 alias ls='ls -GpFh'
 alias gs='git st'
+alias dcu='docker-compose up'
+alias dcd='docker-compose down'
 module() {
 	/bin/bash -c "module $@"
 }
