@@ -1,0 +1,17 @@
+[kubernetes]
+symbol = "⛵ "
+style = "dim green"
+disabled = true
+
+[git_state]
+progress_divider = " of "
+cherry_pick = "🍒 PICKING"
+
+[git_status]
+untracked = "🤷"
+
+[time]
+use_12hr = false
+style = "bold bright-black"
+format = "%H:%M"
+disabled = false

@@ -1,1 +1,13 @@
 .DS_Store
+*.versionsBackup
+.java-version
+.idea/
+.vscode/
+.settings/
+.factorypath
+.classpath
+.project
+.prettierignore
+venv/
+*~
+docs/style.css

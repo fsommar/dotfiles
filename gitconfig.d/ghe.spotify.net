@@ -1,0 +1,5 @@
+[user]
+	email = fredriksommar@spotify.com
+	signingkey = 315B72C0456DAD49
+[alias]
+	pr = !gitpr

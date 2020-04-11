@@ -1,6 +1,7 @@
 [user]
 	name = Fredrik Sommar
-	email = fsommar@kth.se
+[commit]
+	gpgsign = true
 [push]
 	default = simple
 [core]
@@ -24,7 +25,19 @@
 	purr = pull --rebase
 	d = difftool
 	patch = !git --no-pager diff --no-color
+	prepare-squash = !git reset $(git merge-base master $(git rev-parse --abbrev-ref HEAD))
+	undo = reset HEAD@{1}
+	pu = push -u origin HEAD
 [diff]
 	tool = vimdiff
 [difftool]
 	prompt = false
+[url "git@ghe.spotify.net:"]
+	insteadOf = https://ghe.spotify.net/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[includeIf "gitdir:~/projects/ghe.spotify.net/"]
+  path = .gitconfig.d/ghe.spotify.net
+[includeIf "gitdir:~/projects/github.com/"]
+  path = .gitconfig.d/github.com

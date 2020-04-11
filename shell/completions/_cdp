@@ -1,0 +1,2 @@
+#compdef cdp
+compdef "_files -W $PROJECT_PATH" cdp

@@ -67,7 +67,7 @@ defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/projects/"
 
 # Show hidden files by default
-#defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -176,7 +176,7 @@ defaults write com.apple.dock showhidden -bool true
 
 # Read preferences from file
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/dotfiles/iterm"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${HOME}/dotfiles/iterm"
 
 
 ###############################################################################

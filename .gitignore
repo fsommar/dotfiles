@@ -1,5 +1,7 @@
-oh-my-zsh
-dircolors
 old
-nvim/bundle
+**/bundle
 .netrwhist
+config/
+!config/nvim
+!config/starship.toml
+!config/alacritty.yml
