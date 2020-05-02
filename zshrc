@@ -5,12 +5,14 @@ function set_win_title(){
     echo -ne "\033]0; ${PWD/$HOME/~} \007"
 }
 precmd_functions+=(set_win_title)
-fpath+=(~/.shell/completions)
+fpath+=(~/.shell-completions)
 setopt autocd
 setopt cdablevars
 setopt ignoreeof
 
 command -v starship > /dev/null && eval "$(starship init zsh)"
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME="${HOME}/.zplug"
 test -e "${ZPLUG_HOME}" && source ~/.shell/zplug.zsh
+
+autoload -U compinit && compinit -i

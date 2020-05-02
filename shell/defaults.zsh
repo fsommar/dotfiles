@@ -4,7 +4,6 @@ export LD_LIBRARY_PATH="/usr/local/bin:${LD_LIBRARY_PATH}"
 
 export GEM_HOME=/usr/local/lib/ruby/gems/
 export EDITOR=vim
-export RUST_SRC_PATH=/usr/local/src/rust/src
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
 # shellcheck disable=SC2155
 export SHELL="$(command -v zsh)"
@@ -28,11 +27,12 @@ export PATH=\
 "${PATH}"
 
 alias -g NUL="> /dev/null 2>&1"
-alias cdd='cd ~/Downloads'
 alias gs='git st'
+alias gd='git df'
 alias gdc='gd --cached'
 alias grep='grep --color'
-alias ...='cd ../..'
+alias -g ...='../..'
+alias -g ....='../../..'
 
 if command -v exa > /dev/null 2>&1; then
   # shellcheck disable=SC2120

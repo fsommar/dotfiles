@@ -3,3 +3,5 @@
 	signingkey = 315B72C0456DAD49
 [alias]
 	pr = !gitpr
+[url "ssh:git@ghe.spotify.net:"]
+  insteadOf = https://ghe.spotify.net/

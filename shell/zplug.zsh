@@ -6,6 +6,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "gradle/gradle-completion"
 zplug "pkulev/zsh-rustup-completion"
+zplug "zdharma/zsh-diff-so-fancy"
 
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/kubectl", from:oh-my-zsh

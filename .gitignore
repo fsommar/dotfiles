@@ -5,3 +5,6 @@ config/
 !config/nvim
 !config/starship.toml
 !config/alacritty.yml
+!config/fish/**
+fisher.fish
+fishd.*

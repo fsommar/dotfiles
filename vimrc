@@ -1,52 +1,41 @@
-" FIXME: Save swap files and/or history in a dedicated folder?
 set nocompatible " Disable vi compatibility mode
 set langmenu=en_US.UTF-8
 let $LANG='en'
 if !has("nvim")
-	set encoding=utf8
+  set encoding=utf8
 endif
 
 if has("win32") || has("win16")
-	let bundle="~/vimfiles/bundle"
+  let bundle="~/vimfiles/bundle"
 else
-	let bundle="~/.vim/bundle"
+  let bundle="~/.vim/bundle"
 endif
 
 if !isdirectory(expand(bundle . "/vundle"))
-	call system("git clone https://github.com/gmarik/vundle.git " . expand(bundle) . "/vundle")
+  call system("mkdir -p " . expand(bundle))
+  call system("git clone https://github.com/gmarik/vundle.git " . expand(bundle) . "/vundle")
 endif
 
 filetype off
 let g:syntastic_check_on_open=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
-let g:racer_cmd = expand(bundle . "/racer/target/racer")
-
 let &rtp .= ',' . expand(bundle . "/vundle")
+
 call vundle#begin(expand(bundle))
-Plugin 'gmarik/vundle'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'Raimondi/delimitMate' " Better support for parens
-Plugin 'kien/ctrlp.vim' " Fuzzy searching à sublime text
+  Plugin 'gmarik/vundle'
+  Plugin 'bling/vim-airline'
+  Plugin 'scrooloose/syntastic'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'Raimondi/delimitMate' " Better support for parens
+  Plugin 'kien/ctrlp.vim' " Fuzzy searching à sublime text
 
-" Language support
-Plugin 'rodjek/vim-puppet'
-"Plugin 'derekwyatt/vim-scala'
-"Plugin 'phildawes/racer' " Rust autocompletion
-"Plugin 'rust-lang/rust.vim'
+  " Language support
+  "Plugin 'rust-lang/rust.vim'
 
-" Colorschemes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'morhetz/gruvbox'
-
-" YouCompleteMe is only available for Vim 7.3+
-if v:version > 703
-	"Plugin 'Valloric/YouCompleteMe'
-endif
+  " Colorschemes
+  Plugin 'morhetz/gruvbox'
 call vundle#end()
 
 filetype plugin indent on   " detect file type and load indents and plugins
@@ -54,8 +43,8 @@ syntax on                   " turn on syntax highlighting
 
 " Automatically install bundles on first run
 if !isdirectory(expand(bundle . "/vim-airline"))
-	execute 'silent PluginInstall'
-	execute 'silent q'
+  execute 'silent PluginInstall'
+  execute 'silent q'
 endif
 
 " Show arrow for tabs
@@ -65,28 +54,24 @@ highlight SpecialKey ctermfg=2 ctermbg=NONE
 highlight NonText ctermfg=2 ctermbg=NONE
 
 set background=dark
+colorscheme gruvbox
+
 if has('gui_running')
-	set guioptions-=T  " no toolbar
-	set guioptions-=m  " no menu bar
-	set guioptions-=r  " no right-hand scroll bar
-	set guioptions-=L  " no left-hand scroll bar
-	colorscheme gruvbox
-	if has('gui_win32')
-		set guifont=Inconsolata-g_for_Powerline:h11
-	else
-		set guifont=Inconsolata-g\ for\ Powerline\ 12
-	endif
-elseif has("nvim") || ($TERM_PROGRAM =~ "iTerm" && has("termguicolors"))
-	set termguicolors
-	colorscheme gruvbox
-elseif &term =~ "putty" || &term =~ "256color"
-	colorscheme solarized
-else
-	let g:hybrid_use_Xresources = 1
-	colorscheme hybrid
+  set guioptions-=T  " no toolbar
+  set guioptions-=m  " no menu bar
+  set guioptions-=r  " no right-hand scroll bar
+  set guioptions-=L  " no left-hand scroll bar
+  if has('gui_win32')
+    set guifont=Inconsolata-g_for_Powerline:h11
+  else
+    set guifont=Inconsolata-g\ for\ Powerline\ 12
+  endif
 endif
 
-autocmd filetype python setlocal expandtab
+if has("termguicolors")
+  set termguicolors
+endif
+
 
 let mapleader = ","
 let g:mapleader = ","
@@ -98,6 +83,7 @@ set modelines=1
 set laststatus=2
 set clipboard=unnamed " share yank with OS clipboard
 set nowrap        " don't wrap lines
+set expandtab
 set tabstop=4     " a tab is four spaces
 set backspace=indent,eol,start
                     " allow backspacing over everything in insert mode
@@ -105,7 +91,7 @@ set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set number        " always show line numbers
 set relativenumber
-set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftwidth=2  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
@@ -156,33 +142,8 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 " shift tab dedents in insert
 imap <S-Tab> <C-d>
-" Tab at the beginning of a line jumps to the correct indentation
-function! JumpToIndent()
-	if cindent('.') > 0 && col('.') == 1 && empty(getline('.'))
-		return "\<Esc>cc"
-	else
-		return "\<Tab>"
-	endif
-endfunction
-inoremap <silent> <Tab> <C-R>=JumpToIndent()<CR>
 
-" Clears the search highlighting
-" by doing :C
 command! ClearHighlight let @/ = ""
-command! KattisUpload echom system("python submit.py " . bufname("%") . " -f -p oldkattis:adkcasting")
-nnoremap <Leader>k :update<CR>:KattisUpload<CR>
-
-function! DeleteIndent()
-	" Make sure there's no text on the right and that everything to the left
-	" is whitespace
-	if indent('.') > 0 && line('.') != prevnonblank('.')
-		left
-		return ""
-	else
-		return "\<BS>"
-	endif
-endfunction
-inoremap <silent> <BS> <C-R>=DeleteIndent()<CR>
 
 nnoremap <Leader>s :update<CR>
 nnoremap <Leader>w :write<CR>
